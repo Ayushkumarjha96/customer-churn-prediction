@@ -1,319 +1,103 @@
-# ChurnIQ — Customer Churn Prediction & Retention Intelligence
+# 🚀 ChurnIQ — Customer Churn Prediction & Retention Intelligence
 
-> An end-to-end machine learning system that predicts customer churn risk, explains the key drivers behind each prediction, and recommends targeted retention actions.
+> An end-to-end machine learning system that predicts customer churn risk, explains the key drivers behind each prediction, and generates targeted retention recommendations.
 
-🔗 **Live Demo:** https://customer-churn-prediction-uwqzvkgagdpwe5gqqqgpan.streamlit.app/
+## 🌐 Live Demo
+
+👉 **[Launch ChurnIQ](https://customer-churn-prediction-uwqzvkgagd pwe5ggqqqpan.streamlit.app/)**
+
 ---
 
-## 📌 Project Overview
+## 🎯 Project Overview
 
 Customer churn is a major business problem where identifying high-risk customers early can help organizations take proactive retention actions.
 
-**ChurnIQ** is an end-to-end customer churn prediction system built using machine learning, explainable AI, SQL analytics, and Streamlit.
+**ChurnIQ** combines:
 
-The system allows a user to:
+- 🤖 Machine Learning
+- 🔍 Explainable AI
+- 📊 Exploratory Data Analysis
+- 🗄️ SQL Analytics
+- 🎯 Retention Intelligence
+- 🌐 Streamlit Deployment
 
-- Enter customer information
-- Predict the probability of churn
-- Classify the customer into a risk category
-- Understand the strongest churn drivers
-- Generate targeted retention recommendations
-- Analyze customer risk using SQL
+The system answers three important business questions:
+
+> **How likely is this customer to churn?**
+
+> **Why is the customer at risk?**
+
+> **What retention action should be considered?**
 
 ---
 
-## 🎯 Key Features
+## ⭐ Key Features
 
 ### 🤖 Churn Prediction
-Predicts the probability that a customer will leave the service.
+
+Predicts the probability that a customer will leave the service using a trained machine learning model.
 
 ### 📊 Risk Classification
+
 Customers are classified into:
 
 - 🟢 Low Risk
 - 🟡 Medium Risk
 - 🔴 High Risk
 
+The final model uses an optimized classification threshold of **0.55**.
+
 ### 🔍 Explainable AI
 
-SHAP is used to understand which features contribute most strongly to churn predictions.
+SHAP is used to identify the features contributing most strongly to churn predictions.
+
+This makes the model more interpretable instead of treating it as a black box.
 
 ### 💡 Retention Intelligence
 
-The system generates targeted retention actions based on customer characteristics and predicted risk.
+The system generates targeted retention recommendations based on customer characteristics and predicted churn risk.
+
+Example factors include:
+
+- Contract type
+- Monthly charges
+- Technical support
+- Payment method
+- Customer tenure
+- Internet service
 
 ### 🗄️ SQL Business Analytics
 
-SQL queries are used to analyze:
-
-- Customer churn KPIs
-- High-risk customers
-- Retention segments
-- Customer behavior patterns
-
-### 🌐 Interactive Deployment
-
-The complete ML system is deployed as an interactive Streamlit application.
+SQLite and SQL queries are used to analyze customer risk and retention patterns.
 
 ---
 
-## 🏗️ System Architecture
+# 📈 Model Performance
 
-```text
-Customer Data
-      ↓
-Data Cleaning & Preprocessing
-      ↓
-Exploratory Data Analysis
-      ↓
-Feature Engineering
-      ↓
-Machine Learning Model
-      ↓
-Model Evaluation
-      ↓
-Threshold Optimization
-      ↓
-SHAP Explainability
-      ↓
-Retention Strategy
-      ↓
-Streamlit Deployment
-```
-
----
-
-## 📊 Model Performance
-
-The initial model evaluation achieved:
+The model was optimized with a focus on identifying customers who are likely to churn.
 
 | Metric | Score |
 |---|---:|
-| Accuracy | 73.39% |
-| Precision | 49.92% |
-| Recall | 79.77% |
-| F1 Score | 61.38% |
-| ROC-AUC | 84.17% |
+| ROC-AUC | **0.842** |
+| Recall | **0.757** |
+| Precision | **0.539** |
+| F1 Score | **0.630** |
+| Classification Threshold | **0.55** |
 
-The classification threshold was subsequently optimized to **0.55** to provide a better balance between precision and recall for the business use case.
+### Why Recall Matters
 
-### Optimized Model
+For customer churn, missing a genuinely high-risk customer can be more costly than contacting a customer who ultimately stays.
 
-| Metric | Score |
-|---|---:|
-| Threshold | 0.55 |
-| Precision | 53.90% |
-| Recall | 75.67% |
-| F1 Score | 62.96% |
-
-The model prioritizes identifying customers who are likely to churn, making recall an important metric for the retention use case.
+Therefore, the model was optimized to maintain strong **churn recall** while improving the overall F1 score.
 
 ---
 
-## 🔎 Explainable AI with SHAP
+# 🔍 Explainable AI with SHAP
 
-SHAP (SHapley Additive exPlanations) is used to interpret the machine learning model.
+The project uses SHAP to understand which features have the greatest influence on churn predictions.
 
-The project generates:
+Generated visualizations include:
 
 ```text
 images/shap_feature_importance.png
 images/shap_summary.png
-```
-
-These visualizations help identify the features that have the greatest influence on churn predictions.
-
----
-
-## 📈 Exploratory Data Analysis
-
-EDA was performed to identify customer behavior and churn patterns.
-
-Example insight:
-
-Customers without technical support showed a substantially different churn distribution compared with customers receiving technical support.
-
-The project generates multiple visualizations inside:
-
-```text
-images/
-```
-
----
-
-## 🗄️ SQL Analytics
-
-The project uses SQLite for business-oriented customer analysis.
-
-SQL analysis includes:
-
-```text
-sql/
-├── churn_kpis.sql
-├── customer_risk.sql
-└── retention_segments.sql
-```
-
-These queries provide additional business insights beyond the machine learning prediction.
-
----
-
-## 🛠️ Tech Stack
-
-### Programming
-- Python
-
-### Machine Learning
-- Scikit-learn
-- XGBoost
-- Joblib
-
-### Data Analysis
-- Pandas
-- NumPy
-
-### Visualization
-- Matplotlib
-- Seaborn
-
-### Explainable AI
-- SHAP
-
-### Database
-- SQLite
-- SQL
-
-### Deployment
-- Streamlit Community Cloud
-
-### Development
-- VS Code
-- Git
-- GitHub
-
----
-
-## 📁 Project Structure
-
-```text
-customer-churn-prediction/
-│
-├── app/
-│   └── app.py
-│
-├── data/
-│   └── churn.csv
-│
-├── images/
-│   ├── shap_feature_importance.png
-│   ├── shap_summary.png
-│   └── ...
-│
-├── models/
-│   ├── final_churn_model.joblib
-│   ├── final_model_config.json
-│   └── model_metrics.json
-│
-├── notebooks/
-│   ├── 01_project_pipeline.md
-│   └── 02_eda.py
-│
-├── reports/
-│
-├── sql/
-│   ├── churn_kpis.sql
-│   ├── customer_risk.sql
-│   └── retention_segments.sql
-│
-├── src/
-│   ├── download_data.py
-│   ├── eda.py
-│   ├── optimize_model.py
-│   ├── predict.py
-│   ├── prepare_data.py
-│   ├── run_sql_analysis.py
-│   ├── setup_database.py
-│   ├── shap_analysis.py
-│   └── train_model.py
-│
-├── .gitignore
-├── README.md
-└── requirements.txt
-```
-
----
-
-## 🚀 Running Locally
-
-Clone the repository:
-
-```bash
-git clone https://github.com/Ayushkumarjha96/customer-churn-prediction.git
-```
-
-Move into the project:
-
-```bash
-cd customer-churn-prediction
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the Streamlit application:
-
-```bash
-streamlit run app/app.py
-```
-
----
-
-## 🌐 Live Application
-
-The deployed application allows users to interact with the trained model through a web interface.
-
-**Live Demo:**
-
-https://customer-churn-prediction-uwqzvkgagdpwe5gqqqgpan.streamlit.app/
-
----
-
-## 💼 Business Impact
-
-ChurnIQ demonstrates how machine learning can be transformed into a practical business decision-support system.
-
-Instead of only predicting:
-
-> "Will this customer churn?"
-
-the system answers:
-
-> "How likely is this customer to churn, why are they at risk, and what retention action should be considered?"
-
-This connects machine learning predictions with actionable customer retention strategies.
-
----
-
-## 🔮 Future Improvements
-
-- Real-time customer data integration
-- Model monitoring and drift detection
-- Automated retention campaign integration
-- Customer lifetime value prediction
-- A/B testing of retention strategies
-- Advanced model comparison and hyperparameter tuning
-- Cloud database integration
-
----
-
-## 👨‍💻 Author
-
-**Ayush Kumar Jha**
-
-Data Science & Machine Learning Project
-
-GitHub:  
-https://github.com/Ayushkumarjha96
